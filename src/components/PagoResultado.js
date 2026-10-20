@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { lanzarConfeti } from "../utils/confeti"; 
 import { Link, useParams } from "react-router-dom";
 import { Alert, Button, Card, Container } from "react-bootstrap";
 import ResumenOrden from "./ResumenOrden";
@@ -7,6 +9,9 @@ import { ordenesDB } from "../data/db";
 const PagoResultado = ({ exito }) => {
   const { id } = useParams();
   const orden = ordenesDB.obtener(id);
+    useEffect(() => {                                  
+    if (exito && orden) lanzarConfeti();
+  }, [exito, orden]);
   if (!orden) return <Container as="main" className="my-5"><Alert variant="warning">Orden no encontrada.</Alert></Container>;
 
   const numero = `#${String(orden.id).padStart(5, "0")}`;
