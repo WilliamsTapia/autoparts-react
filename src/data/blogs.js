@@ -25,7 +25,7 @@ export const BLOGS = [
     id: 2,
     titulo: "¿Sabías esto sobre la vida útil de tu batería?",
     resumen: "La duración promedio de una batería no solo depende del uso, sino también del clima y de cómo se instala. Te contamos un dato curioso.",
-    imagen: "https://placehold.co/800x350/1c1c1c/f0a500?text=Dato+Curioso",
+    imagen: IMG + "curioso.jpg",
     cta: { texto: "Ver baterías", ruta: "/categorias/Baterías" },
     bloques: [
       { tipo: "p", texto: "La mayoría de la gente piensa que una batería de auto dura \"lo que dura\" sin más, pero en realidad su vida útil depende de varios factores que muchas veces pasamos por alto." },
