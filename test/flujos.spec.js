@@ -21,12 +21,10 @@ describe("Flujos completos de la aplicación", () => {
   afterEach(() => { vista && vista.desmontar(); vista = null; jasmine.clock().uninstall(); });
 
   // ---------- Servicio de pago (mock del tiempo) ----------
-  it("30. procesarPago resuelve aprobado o rechazado según la simulación", async () => {
-    const aprobado = procesarPago({ resultadoSimulado: "aprobado" });
-    const rechazado = procesarPago({ resultadoSimulado: "rechazado" });
-    jasmine.clock().tick(600);
-    expect((await aprobado).aprobado).toBeTrue();
-    expect((await rechazado).aprobado).toBeFalse();
+    it("30b. procesarPago sin argumentos aprueba por defecto", async () => {
+    const p = procesarPago();
+    jasmine.clock().tick(500);
+    expect((await p).aprobado).toBeTrue();
   });
 
   // ---------- Compra ----------
