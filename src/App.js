@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Productos from "./components/Productos";
 import ProductoDetalle from "./components/ProductoDetalle";
-import Categorias from "./components/Categorias";
+
 import Ofertas from "./components/Ofertas";
 import Carrito from "./components/Carrito";
 import Checkout from "./components/Checkout";
@@ -42,8 +42,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="productos" element={<Productos />} />
         <Route path="productos/:id" element={<ProductoDetalle />} />
-        <Route path="categorias" element={<Categorias />} />
-        <Route path="categorias/:nombre" element={<Categorias />} />
+       
         <Route path="ofertas" element={<Ofertas />} />
         <Route path="carrito" element={<Carrito />} />
         <Route path="checkout" element={<Checkout />} />

@@ -91,7 +91,7 @@ describe("Flujos completos de la aplicación", () => {
   });
 
   it("37. las páginas públicas se renderizan con su contenido principal", () => {
-    const casos = [["/", "AutoParts CL"], ["/nosotros", "Nuestra historia"], ["/blogs", "Blog"], ["/blogs/2", "¿Sabías esto"], ["/contacto", "Contáctanos"], ["/registro", "Crear cuenta"], ["/ruta-inexistente", "404"], ["/categorias", "Categorías"]];
+    const casos = [["/", "AutoParts CL"], ["/nosotros", "Nuestra historia"], ["/blogs", "Blog"], ["/blogs/2", "¿Sabías esto"], ["/contacto", "Contáctanos"], ["/registro", "Crear cuenta"], ["/ruta-inexistente", "404"], ["/categorias", "404"]];
     casos.forEach(([ruta, texto]) => {
       vista = app(ruta);
       expect(vista.contenedor.textContent).toContain(texto);

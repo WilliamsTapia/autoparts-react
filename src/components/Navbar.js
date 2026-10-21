@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, Badge, Button } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
 import { useCarrito } from "../context/CarritoContext";
 
-const ENLACES = [["/", "Home"], ["/productos", "Productos"], ["/categorias", "Categorías"], ["/ofertas", "Ofertas"], ["/nosotros", "Nosotros"], ["/blogs", "Blog"], ["/contacto", "Contacto"]];
+const ENLACES = [["/", "Home"], ["/productos", "Productos"],  ["/ofertas", "Ofertas"], ["/nosotros", "Nosotros"], ["/blogs", "Blog"], ["/contacto", "Contacto"]];
 
 /** Barra de navegación principal (responsiva: se colapsa en pantallas menores a "lg") */
 const Navigation = () => {

@@ -8,7 +8,7 @@ export const BLOGS = [
     titulo: "5 señales de que tus pastillas de freno están gastadas",
     resumen: "Un chirrido al frenar o un pedal más blando pueden ser señales tempranas de desgaste. Aquí te contamos qué revisar.",
     imagen: IMG + "pastillas-gastadas.jpg",
-    cta: { texto: "Ver pastillas de freno", ruta: "/categorias/Frenos" },
+    cta: { texto: "Ver pastillas de freno", ruta: "/productos?categoria=Frenos" },
     bloques: [
       { tipo: "p", texto: "Las pastillas de freno son una de las piezas de seguridad más importantes de tu vehículo, y su desgaste suele ser gradual, lo que hace fácil pasarlo por alto hasta que ya es tarde. Aquí te dejamos cinco señales para que revises a tiempo:" },
       { tipo: "ol", items: [
@@ -26,7 +26,7 @@ export const BLOGS = [
     titulo: "¿Sabías esto sobre la vida útil de tu batería?",
     resumen: "La duración promedio de una batería no solo depende del uso, sino también del clima y de cómo se instala. Te contamos un dato curioso.",
     imagen: IMG + "curioso.jpg",
-    cta: { texto: "Ver baterías", ruta: "/categorias/Baterías" },
+    cta: { texto: "Ver baterías", ruta: "/productos?categoria=Baterías" },
     bloques: [
       { tipo: "p", texto: "La mayoría de la gente piensa que una batería de auto dura \"lo que dura\" sin más, pero en realidad su vida útil depende de varios factores que muchas veces pasamos por alto." },
       { tipo: "p", destacado: "Dato curioso:", texto: "el calor extremo daña más rápido una batería que el frío. Aunque en invierno cuesta más arrancar el auto, es en los meses de mucho calor cuando el líquido interno de la batería se evapora más rápido, acelerando su desgaste interno." },

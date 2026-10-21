@@ -17,9 +17,10 @@ describe("Navegación y flujo de la tienda (integración)", () => {
     expect(vista.contenedor.querySelectorAll("[data-testid=badge-oferta]").length).toBe(4);
   });
 
-  it("26. la ruta /categorias/Frenos muestra la categoría seleccionada", () => {
-    vista = app("/categorias/Frenos");
-    expect(vista.contenedor.querySelector("h2").textContent).toBe("Frenos");
+ it("26. /productos?categoria=Frenos abre el catálogo con ese filtro aplicado", () => {
+    vista = app("/productos?categoria=Frenos");
+    expect(vista.contenedor.querySelector("select[aria-label=Categoría]").value).toBe("Frenos");
+    expect(vista.contenedor.querySelectorAll(".card-producto").length).toBe(2);
   });
 
   it("27. agregar un producto actualiza el contador del navbar", () => {
