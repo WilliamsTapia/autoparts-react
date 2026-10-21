@@ -11,8 +11,10 @@ const AdminLayout = () => {
       <aside className="admin-sidebar p-3">
         <h5 className="text-white mb-4">🔧 AutoParts CL<br /><small className="text-white-50">Panel admin</small></h5>
         <nav className="nav flex-column">
-          <NavLink end className={clase} to="/admin">Home</NavLink>
+          <NavLink end className={clase} to="/admin">Dashboard</NavLink>
           <NavLink className={clase} to="/admin/productos">Productos</NavLink>
+          <NavLink className={clase} to="/admin/criticos">Stock Crítico</NavLink>
+          <NavLink className={clase} to="/admin/ordenes">Órdenes / Boletas</NavLink>
           <NavLink className={clase} to="/admin/usuarios">Usuarios</NavLink>
           <NavLink to="/">Volver a la tienda</NavLink>
         </nav>

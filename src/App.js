@@ -22,6 +22,8 @@ import ProductosAdmin from "./components/admin/ProductosAdmin";
 import ProductoFormPage from "./components/admin/ProductoFormPage";
 import UsuariosAdmin from "./components/admin/UsuariosAdmin";
 import UsuarioFormPage from "./components/admin/UsuarioFormPage";
+import OrdenesAdmin from "./components/admin/OrdenesAdmin";
+import StockCriticoAdmin from "./components/admin/StockCriticoAdmin";
 
 /** Layout de la tienda pública: navbar + pantalla + footer */
 const TiendaLayout = () => {
@@ -60,6 +62,8 @@ const App = () => {
         <Route path="productos" element={<ProductosAdmin />} />
         <Route path="productos/nuevo" element={<ProductoFormPage />} />
         <Route path="productos/:id/editar" element={<ProductoFormPage />} />
+        <Route path="criticos" element={<StockCriticoAdmin />} />
+        <Route path="ordenes" element={<OrdenesAdmin />} />
         <Route path="usuarios" element={<UsuariosAdmin />} />
         <Route path="usuarios/nuevo" element={<UsuarioFormPage />} />
         <Route path="usuarios/:run/editar" element={<UsuarioFormPage />} />
