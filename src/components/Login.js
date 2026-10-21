@@ -20,7 +20,7 @@ const Login = () => {
     <Container as="main" className="my-5" style={{ maxWidth: 460 }}>
       <h1 className="h3 mb-4">Iniciar sesión</h1>
       <FormLogin onIngresar={ingresar} />
-      <p className="mt-3 text-muted">¿No tienes cuenta? <Link to="/registro">Regístrate</Link>. Prueba admin con <code>admin@duoc.cl</code>.</p>
+      <p className="mt-3 text-muted">¿No tienes cuenta? <Link to="/registro">Regístrate</Link>.</p>
     </Container>
   );
 };
