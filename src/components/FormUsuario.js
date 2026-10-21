@@ -3,6 +3,7 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import Campo from "./Campo";
 import Alerta from "./Alerta";
 import RegionComuna from "./RegionComuna";
+import useFormulario from "../hooks/useFormulario";
 import { validarUsuario } from "../utils/validaciones";
 
 const VACIO = { run: "", nombre: "", apellidos: "", correo: "", fechaNacimiento: "", tipoUsuario: "Cliente", region: "", comuna: "", direccion: "" };
@@ -12,17 +13,16 @@ const VACIO = { run: "", nombre: "", apellidos: "", correo: "", fechaNacimiento:
  * y en el panel admin (modo "admin", que agrega el tipo de usuario).
  */
 const FormUsuario = ({ inicial, modo = "registro", editando = false, onGuardar, textoBoton = "Guardar" }) => {
-  const [valores, setValores] = useState({ ...VACIO, ...inicial });
-  const [errores, setErrores] = useState({});
+  const { valores, errores, poner, cambiar, validarTodo } = useFormulario(
+    { ...VACIO, ...inicial },
+    validarUsuario
+  );
   const [aviso, setAviso] = useState(null);
 
-  const poner = (campo, valor) => setValores((v) => ({ ...v, [campo]: valor }));
-  const cambiar = (e) => poner(e.target.name, e.target.value);
 
   const enviar = (e) => {
     e.preventDefault();
-    const errs = validarUsuario(valores);
-    setErrores(errs);
+    const errs = validarTodo();
     if (Object.keys(errs).length > 0) {
       setAviso({ ok: false, mensaje: "Revisa los campos marcados en rojo." });
       return;
