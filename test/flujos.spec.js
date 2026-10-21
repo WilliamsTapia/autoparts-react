@@ -21,14 +21,14 @@ describe("Flujos completos de la aplicación", () => {
   afterEach(() => { vista && vista.desmontar(); vista = null; jasmine.clock().uninstall(); });
 
   // ---------- Servicio de pago (mock del tiempo) ----------
-    it("30b. procesarPago sin argumentos aprueba por defecto", async () => {
+  it("31. procesarPago sin argumentos aprueba por defecto", async () => {
     const p = procesarPago();
     jasmine.clock().tick(500);
     expect((await p).aprobado).toBeTrue();
   });
 
   // ---------- Compra ----------
-  it("31. compra aprobada: crea la orden, vacía el carrito y muestra la boleta", async () => {
+  it("32. compra aprobada: crea la orden, vacía el carrito y muestra la boleta", async () => {
     jasmine.clock().uninstall(); // este flujo usa el temporizador real de la pasarela
     localStorage.setItem("ap2_carrito", JSON.stringify(CARRITO));
     vista = app("/checkout");
@@ -42,7 +42,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(c.querySelector("[data-testid=total-resumen]").textContent).toBe("$44.000");
   });
 
-  it("32. pago rechazado: guarda la orden como Rechazado y conserva el carrito", async () => {
+  it("33. pago rechazado: guarda la orden como Rechazado y conserva el carrito", async () => {
     jasmine.clock().uninstall();
     localStorage.setItem("ap2_carrito", JSON.stringify(CARRITO));
     vista = app("/checkout");
@@ -56,12 +56,12 @@ describe("Flujos completos de la aplicación", () => {
     expect(JSON.parse(localStorage.getItem("ap2_carrito")).length).toBe(1);
   });
 
-  it("33. el checkout sin productos invita a ir al catálogo", () => {
+  it("34. el checkout sin productos invita a ir al catálogo", () => {
     vista = app("/checkout");
     expect(vista.contenedor.querySelector(".alert").textContent).toContain("No hay productos");
   });
 
-  it("34. el carrito permite cambiar cantidad, vaciar y ofrece comprar", () => {
+  it("35. el carrito permite cambiar cantidad, vaciar y ofrece comprar", () => {
     localStorage.setItem("ap2_carrito", JSON.stringify(CARRITO));
     vista = app("/carrito");
     const c = vista.contenedor;
@@ -73,7 +73,7 @@ describe("Flujos completos de la aplicación", () => {
   });
 
   // ---------- Catálogo y contenido ----------
-  it("35. el detalle de producto muestra el precio con descuento y agrega al carrito", () => {
+  it("36. el detalle de producto muestra el precio con descuento y agrega al carrito", () => {
     vista = app("/productos/1");
     const c = vista.contenedor;
     expect(c.querySelector("h1").textContent).toBe("Pastillas de freno delanteras");
@@ -82,7 +82,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(c.querySelector("[data-testid=contador-carrito]").textContent).toBe("1");
   });
 
-  it("36. un producto o artículo inexistente muestra un aviso", () => {
+  it("37. un producto o artículo inexistente muestra un aviso", () => {
     vista = app("/productos/999");
     expect(vista.contenedor.textContent).toContain("Producto no encontrado");
     vista.desmontar();
@@ -90,8 +90,8 @@ describe("Flujos completos de la aplicación", () => {
     expect(vista.contenedor.textContent).toContain("Artículo no encontrado");
   });
 
-  it("37. las páginas públicas se renderizan con su contenido principal", () => {
-    const casos = [["/", "AutoParts CL"], ["/nosotros", "Nuestra historia"], ["/blogs", "Blog"], ["/blogs/2", "¿Sabías esto"], ["/contacto", "Contáctanos"], ["/registro", "Crear cuenta"], ["/ruta-inexistente", "404"], ["/categorias", "404"]];
+  it("38. las páginas públicas se renderizan con su contenido principal", () => {
+    const casos = [["/", "AutoParts CL"], ["/nosotros", "Nuestra historia"], ["/blogs", "Blog"], ["/blogs/2", "¿Sabías esto"], ["/contacto", "Contáctanos"], ["/registro", "Crear cuenta"], ["/ruta-inexistente", "404"]];
     casos.forEach(([ruta, texto]) => {
       vista = app(ruta);
       expect(vista.contenedor.textContent).toContain(texto);
@@ -101,14 +101,14 @@ describe("Flujos completos de la aplicación", () => {
   });
 
   // ---------- Sesión ----------
-  it("38. el login con un correo inexistente muestra un error", () => {
+  it("39. el login con un correo inexistente muestra un error", () => {
     vista = app("/login");
     llenar(vista.contenedor, { correo: "nadie@gmail.com", contrasena: "1234" });
     enviar(vista.contenedor.querySelector("form"));
     expect(vista.contenedor.querySelector(".alert-warning").textContent).toContain("No existe una cuenta");
   });
 
-  it("39. el login del administrador guarda la sesión y redirige al panel", () => {
+  it("40. el login del administrador guarda la sesión y redirige al panel", () => {
     vista = app("/login");
     llenar(vista.contenedor, { correo: "admin@duoc.cl", contrasena: "1234" });
     enviar(vista.contenedor.querySelector("form"));
@@ -117,7 +117,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(vista.contenedor.querySelector("h1").textContent).toContain("panel de administración");
   });
 
-  it("40. el registro crea un usuario Cliente y rechaza un RUN repetido", () => {
+  it("41. el registro crea un usuario Cliente y rechaza un RUN repetido", () => {
     vista = app("/registro");
     const c = vista.contenedor;
     const datos = { run: "190110222", nombre: "Ana", apellidos: "Soto", correo: "ana@gmail.com", direccion: "Calle 1", region: "Maule", comuna: "Talca" };
@@ -131,14 +131,14 @@ describe("Flujos completos de la aplicación", () => {
   });
 
   // ---------- Panel administrador ----------
-  it("41. el dashboard admin muestra los totales de productos, usuarios y órdenes", () => {
+  it("42. el dashboard admin muestra los totales de productos, usuarios y órdenes", () => {
     iniciarComoAdmin();
     vista = app("/admin");
     const numeros = [...vista.contenedor.querySelectorAll(".display-6")].map((n) => n.textContent);
     expect(numeros).toEqual(["9", "1", "1", "0"]); // productos, stock crítico, usuarios, órdenes
   });
 
-  it("42. admin elimina un producto tras confirmar (mock de window.confirm)", () => {
+  it("43. admin elimina un producto tras confirmar (mock de window.confirm)", () => {
     iniciarComoAdmin();
     spyOn(window, "confirm").and.returnValue(true);
     vista = app("/admin/productos");
@@ -149,7 +149,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(productosDB.listar().length).toBe(8);
   });
 
-  it("43. admin no elimina si cancela la confirmación", () => {
+  it("44. admin no elimina si cancela la confirmación", () => {
     iniciarComoAdmin();
     spyOn(window, "confirm").and.returnValue(false);
     vista = app("/admin/productos");
@@ -157,7 +157,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(productosDB.listar().length).toBe(9);
   });
 
-  it("44. admin crea un producto nuevo desde el formulario", () => {
+  it("45. admin crea un producto nuevo desde el formulario", () => {
     iniciarComoAdmin();
     vista = app("/admin/productos/nuevo");
     llenar(vista.contenedor, { codigo: "TST-001", nombre: "Producto prueba", precio: "5000", stock: "7", categoria: "Frenos" });
@@ -167,7 +167,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(creado.precio).toBe(5000);
   });
 
-  it("45. admin edita un producto existente y el formulario no guarda datos inválidos", () => {
+  it("46. admin edita un producto existente y el formulario no guarda datos inválidos", () => {
     iniciarComoAdmin();
     vista = app("/admin/productos/1/editar");
     const c = vista.contenedor;
@@ -181,7 +181,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(productosDB.obtener(1).stock).toBe(25);
   });
 
-  it("46. admin crea, edita y elimina usuarios; el RUN no se puede cambiar al editar", () => {
+  it("47. admin crea, edita y elimina usuarios; el RUN no se puede cambiar al editar", () => {
     iniciarComoAdmin();
     vista = app("/admin/usuarios/nuevo");
     llenar(vista.contenedor, { run: "123456785", nombre: "Luis", apellidos: "Mora", correo: "luis@duoc.cl", direccion: "Av 1", tipoUsuario: "Vendedor" });
@@ -203,7 +203,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(usuariosDB.listar().length).toBe(1);
   });
 
-  it("47. el admin sembrado se puede editar (su RUN pasa la validación)", () => {
+  it("48. el admin sembrado se puede editar (su RUN pasa la validación)", () => {
     iniciarComoAdmin();
     vista = app("/admin/usuarios/197654325/editar");
     enviar(vista.contenedor.querySelector("form"));

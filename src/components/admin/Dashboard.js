@@ -7,9 +7,9 @@ const Dashboard = () => {
   const productos = productosDB.listar();
   const tarjetas = [
     ["Productos", productos.length, "primary", "/admin/productos"],
-    ["Stock crítico", productos.filter(esStockCritico).length, "warning", "/admin/productos"],
+    ["Stock crítico", productos.filter(esStockCritico).length, "warning", "/admin/criticos"],
     ["Usuarios", usuariosDB.listar().length, "success", "/admin/usuarios"],
-    ["Órdenes", ordenesDB.listar().length, "dark", null],
+    ["Órdenes", ordenesDB.listar().length, "dark", "/admin/ordenes"],
   ];
   return (
     <>
@@ -18,7 +18,8 @@ const Dashboard = () => {
         {tarjetas.map(([t, n, color, ruta]) => (
           <Col xs={6} lg={3} key={t}>
             <Card className={`text-bg-${color} p-3 h-100`}>
-              <div className="small">{t}</div><div className="display-6">{n}</div>
+              <div className="small">{t}</div>
+              <div className="display-6">{n}</div>
               {ruta && <Link to={ruta} className="stretched-link small text-reset">Ver detalle</Link>}
             </Card>
           </Col>
