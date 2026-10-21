@@ -14,8 +14,11 @@ const AdminLayout = () => {
           <NavLink end className={clase} to="/admin">Dashboard</NavLink>
           <NavLink className={clase} to="/admin/productos">Productos</NavLink>
           <NavLink className={clase} to="/admin/criticos">Stock Crítico</NavLink>
+          <NavLink className={clase} to="/admin/categorias">Categorías</NavLink>
           <NavLink className={clase} to="/admin/ordenes">Órdenes / Boletas</NavLink>
+          <NavLink className={clase} to="/admin/reportes">Reportes</NavLink>
           <NavLink className={clase} to="/admin/usuarios">Usuarios</NavLink>
+          <NavLink className={clase} to="/admin/perfil">Mi Perfil</NavLink>
           <NavLink to="/">Volver a la tienda</NavLink>
         </nav>
       </aside>

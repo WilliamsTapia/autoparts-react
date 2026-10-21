@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Productos from "./components/Productos";
 import ProductoDetalle from "./components/ProductoDetalle";
-
+import Categorias from "./components/Categorias";
 import Ofertas from "./components/Ofertas";
 import Carrito from "./components/Carrito";
 import Checkout from "./components/Checkout";
@@ -24,6 +24,9 @@ import UsuariosAdmin from "./components/admin/UsuariosAdmin";
 import UsuarioFormPage from "./components/admin/UsuarioFormPage";
 import OrdenesAdmin from "./components/admin/OrdenesAdmin";
 import StockCriticoAdmin from "./components/admin/StockCriticoAdmin";
+import CategoriasAdmin from "./components/admin/CategoriasAdmin";
+import ReportesAdmin from "./components/admin/ReportesAdmin";
+import PerfilAdmin from "./components/admin/PerfilAdmin";
 
 /** Layout de la tienda pública: navbar + pantalla + footer */
 const TiendaLayout = () => {
@@ -44,7 +47,8 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="productos" element={<Productos />} />
         <Route path="productos/:id" element={<ProductoDetalle />} />
-       
+        <Route path="categorias" element={<Categorias />} />
+        <Route path="categorias/:nombre" element={<Categorias />} />
         <Route path="ofertas" element={<Ofertas />} />
         <Route path="carrito" element={<Carrito />} />
         <Route path="checkout" element={<Checkout />} />
@@ -63,10 +67,13 @@ const App = () => {
         <Route path="productos/nuevo" element={<ProductoFormPage />} />
         <Route path="productos/:id/editar" element={<ProductoFormPage />} />
         <Route path="criticos" element={<StockCriticoAdmin />} />
+        <Route path="categorias" element={<CategoriasAdmin />} />
         <Route path="ordenes" element={<OrdenesAdmin />} />
+        <Route path="reportes" element={<ReportesAdmin />} />
         <Route path="usuarios" element={<UsuariosAdmin />} />
         <Route path="usuarios/nuevo" element={<UsuarioFormPage />} />
         <Route path="usuarios/:run/editar" element={<UsuarioFormPage />} />
+        <Route path="perfil" element={<PerfilAdmin />} />
       </Route>
       <Route path="*" element={<NoEncontrado />} />
     </Routes>
