@@ -3,20 +3,21 @@ import { Form, Button } from "react-bootstrap";
 import Campo from "./Campo";
 import Alerta from "./Alerta";
 import { validarLogin } from "../utils/validaciones";
+import useFormulario from "../hooks/useFormulario";
 import { lanzarConfeti } from "../utils/confeti";
+
 
 /** onIngresar(datos) devuelve { ok, mensaje } y lo decide el padre */
 const FormLogin = ({ onIngresar }) => {
-  const [valores, setValores] = useState({ correo: "", contrasena: "" });
-  const [errores, setErrores] = useState({});
+  const { valores, errores, cambiar, validarTodo } = useFormulario(
+  { correo: "", contrasena: "" },
+  validarLogin);
   const [resultado, setResultado] = useState(null);
 
-  const cambiar = (e) => setValores({ ...valores, [e.target.name]: e.target.value });
 
   const enviar = (e) => {
     e.preventDefault();
-    const errs = validarLogin(valores);
-    setErrores(errs);
+    const errs = validarTodo();
     if (Object.keys(errs).length > 0) {
       setResultado({ ok: false, mensaje: "Revisa los campos marcados: correo válido y contraseña de 4 a 10 caracteres." });
       return;
