@@ -5,7 +5,7 @@
 **Proyecto  — Evaluación Parcial 2**  
 **Asignatura:** DSY1104 — Desarrollo Fullstack II  
 **Institución:** Duoc UC  
-**Equipo:** Grupo 7
+**Equipo:** Grupo 8
 
 **Integrantes:**
 - Francisco Ancamil
@@ -383,7 +383,7 @@ https://github.com/WilliamsTapia/autoparts-react.git
 **Institución:** Duoc UC  
 **Evaluación:** Parcial 2
 
-**Equipo de desarrollo — Grupo 7**
+**Equipo de desarrollo — Grupo 8**
 
 - Francisco Ancamil
 - Felipe Arce
