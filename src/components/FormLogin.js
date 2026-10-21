@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import Campo from "./Campo";
 import Alerta from "./Alerta";
 import { validarLogin } from "../utils/validaciones";
+import { lanzarConfeti } from "../utils/confeti";
 
 /** onIngresar(datos) devuelve { ok, mensaje } y lo decide el padre */
 const FormLogin = ({ onIngresar }) => {
@@ -20,7 +21,12 @@ const FormLogin = ({ onIngresar }) => {
       setResultado({ ok: false, mensaje: "Revisa los campos marcados: correo válido y contraseña de 4 a 10 caracteres." });
       return;
     }
-    setResultado(onIngresar(valores));
+
+    const res = onIngresar(valores);
+    setResultado(res);
+    if (res?.ok) {
+      lanzarConfeti();
+    }
   };
 
   return (
