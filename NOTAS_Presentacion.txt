@@ -1,0 +1,52 @@
+﻿
+AutoParts CL - Grupo 8
+Arranque para la presentación
+
+Extrae el ZIP en una carpeta nueva. En VS Code abre Grupo8_AutoParts,
+donde están las carpetas autoparts-backend y autoparts-react.
+Necesitas Java 17 o superior y Node.js con npm.
+
+1. Backend. Desde la carpeta principal, en la primera terminal:
+
+   cd .\autoparts-backend
+   $env:SERVER_PORT = '8082'
+   $env:AUTOPARTS_FRONTEND_ORIGIN = 'http://localhost:3000'
+   .\iniciar-local.cmd
+
+   Espera a que aparezca Started DemoApplication.
+
+2. Frontend. Abre otra terminal en la carpeta principal y ejecuta:
+
+   cd .\autoparts-react
+   $env:PORT = '3000'
+   $env:REACT_APP_API_URL = 'http://localhost:8082/api/v1'
+   npm.cmd ci
+   npm.cmd start
+
+   Ejecuta npm.cmd ci solo la primera vez en esa copia. Cuando React
+   compile, abre http://localhost:3000.
+
+3. Puertos ocupados.
+
+   Si el 8082 está ocupado, usa 8090 en SERVER_PORT y REACT_APP_API_URL.
+   Si el 3000 está ocupado, usa 3005 en AUTOPARTS_FRONTEND_ORIGIN y PORT,
+   y abre http://localhost:3005. Si ya habías arrancado tus procesos,
+   detenlos con Ctrl+C antes de aplicar los cambios y vuelve a iniciarlos.
+   El lanzador .\iniciar-presentacion.ps1 automatiza la selección de
+   puertos cuando la política de PowerShell permite ejecutar .ps1.
+
+4. Cuentas de prueba.
+
+   Francisco Ancamil   fr.ancamil@duoc.cl
+   Felipe Arce         fe.arcep@duoc.cl
+   Williams Tapia      wil.tapia@duoc.cl
+   Contraseña para los tres clientes: AutoPartsCliente2026
+   Administrador: admin@duoc.cl / AutoPartsDemo2026
+
+   Las cuentas ya están en autoparts-backend/db/autoparts.mv.db.
+   Si H2 muestra el error 90020, otra instancia está usando ese archivo.
+   Detén esa instancia antes de abrir otro backend con la misma base.
+
+La carpeta documentos contiene el ERS y los anexos 2, 3 y 4.
+Para evaluar con MySQL, sigue la sección Inicio con MySQL en Windows del
+README del backend. Las cuentas de prueba incluidas pertenecen a H2.
